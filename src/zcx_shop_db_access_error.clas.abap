@@ -15,15 +15,6 @@ public section.
       attr4 type scx_attrname value '',
     end of CREATE_ERROR .
   constants:
-    begin of READ_ERROR,
-      msgid type symsgid value 'ZSHOP',
-      msgno type symsgno value '001',
-      attr1 type scx_attrname value 'MV_TABLE_NAME',
-      attr2 type scx_attrname value '',
-      attr3 type scx_attrname value '',
-      attr4 type scx_attrname value '',
-    end of READ_ERROR .
-  constants:
     begin of UPDATE_ERROR,
       msgid type symsgid value 'ZSHOP',
       msgno type symsgno value '002',
