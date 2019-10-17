@@ -32,7 +32,8 @@ interface ZIF_SHOP_SO_TXT_DB
       ZCX_SHOP_DB_ACCESS_ERROR .
   methods DELETE
     importing
-      !IS_DATA type ZSHOP_SO_TXT
+      !IV_SO_NUMBER type VBELN
+      !IV_POSNR type POSNR
     raising
       ZCX_SHOP_DBDATA_NOT_FOUND
       ZCX_SHOP_DB_ACCESS_ERROR .

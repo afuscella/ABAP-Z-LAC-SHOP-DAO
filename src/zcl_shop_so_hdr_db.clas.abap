@@ -36,6 +36,8 @@ CLASS ZCL_SHOP_SO_HDR_DB IMPLEMENTATION.
           mv_table_name = 'ZSHOP_SO_HDR'.
     ENDIF.
 
+    rs_so_hdr = is_data.
+
   ENDMETHOD.
 
 

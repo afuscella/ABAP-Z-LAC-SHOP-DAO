@@ -5,6 +5,8 @@ interface ZIF_SHOP_SO_HDR_DB
   methods CREATE
     importing
       !IS_DATA type ZSHOP_SO_HDR
+    returning
+      value(RS_SO_HDR) type ZSHOP_SO_HDR
     raising
       ZCX_SHOP_DBDATA_ALREADY_EXISTS
       ZCX_SHOP_DB_ACCESS_ERROR .
