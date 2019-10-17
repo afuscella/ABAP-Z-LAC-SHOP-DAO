@@ -42,9 +42,8 @@ CLASS ZCL_SHOP_SO_TXT_DB IMPLEMENTATION.
   METHOD zif_shop_so_txt_db~delete.
 
     SELECT COUNT(*) FROM zshop_so_txt
-      WHERE so_number = is_data-so_number
-        AND posnr     = is_data-posnr
-        AND line      = is_data-line.
+      WHERE so_number = iv_so_number
+        AND posnr     = iv_posnr.
 
     IF sy-dbcnt = 0.
       RAISE EXCEPTION TYPE zcx_shop_dbdata_not_found
@@ -52,7 +51,8 @@ CLASS ZCL_SHOP_SO_TXT_DB IMPLEMENTATION.
           textid = zcx_shop_dbdata_not_found=>no_data.
     ENDIF.
 
-    DELETE zshop_so_txt FROM is_data.
+    DELETE FROM zshop_so_txt WHERE so_number = iv_so_number
+                               AND posnr     = iv_posnr.
 
     IF sy-subrc <> 0.
       RAISE EXCEPTION TYPE zcx_shop_db_access_error
