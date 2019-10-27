@@ -41,7 +41,7 @@ CLASS ZCL_LAC_SHOP_PERSIST_SO_HDR IMPLEMENTATION.
 
   METHOD zif_lac_shop_persist_so_hdr~create_resource.
 
-    DATA: ls_so_hdr_json TYPE zshop_so_hdr_json,
+    DATA: ls_so_hdr_json TYPE zlac_shop_so_hdr_json,
           ls_so_hdr      TYPE zlac_shop_so_hdr.
 
     ls_so_hdr_json = ia_data.
@@ -62,7 +62,7 @@ CLASS ZCL_LAC_SHOP_PERSIST_SO_HDR IMPLEMENTATION.
   METHOD zif_lac_shop_persist_so_hdr~delete_resource.
 
     DATA: ls_so_hdr      TYPE zlac_shop_so_hdr,
-          ls_so_hdr_json TYPE zshop_so_hdr_json.
+          ls_so_hdr_json TYPE zlac_shop_so_hdr_json.
 
     ls_so_hdr_json = ia_data.
 

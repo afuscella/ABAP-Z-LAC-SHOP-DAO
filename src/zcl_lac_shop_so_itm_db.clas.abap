@@ -91,7 +91,7 @@ CLASS ZCL_LAC_SHOP_SO_ITM_DB IMPLEMENTATION.
 
   METHOD zif_lac_shop_so_itm_db~read_by_keys.
 
-    SELECT SINGLE * FROM zshop_so_itm
+    SELECT SINGLE * FROM zlac_shop_so_itm
       INTO rs_data
       WHERE so_number = iv_sales_order_id
         AND posnr     = iv_sales_order_item.
@@ -107,7 +107,7 @@ CLASS ZCL_LAC_SHOP_SO_ITM_DB IMPLEMENTATION.
 
   METHOD zif_lac_shop_so_itm_db~update.
 
-    SELECT COUNT(*) FROM zshop_so_itm
+    SELECT COUNT(*) FROM zlac_shop_so_itm
       WHERE so_number = is_data-so_number
         AND posnr     = is_data-posnr.
 
@@ -117,7 +117,7 @@ CLASS ZCL_LAC_SHOP_SO_ITM_DB IMPLEMENTATION.
           textid = zcx_lac_shop_data_not_found=>not_found.
     ENDIF.
 
-    MODIFY zshop_so_itm FROM is_data.
+    MODIFY zlac_shop_so_itm FROM is_data.
 
     IF sy-subrc <> 0.
       RAISE EXCEPTION TYPE zcx_lac_shop_db_access_error

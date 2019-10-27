@@ -42,7 +42,7 @@ CLASS ZCL_LAC_SHOP_PERSIST_SO_ITM IMPLEMENTATION.
   METHOD zif_lac_shop_persist_so_itm~create_resource.
 
     DATA: ls_so_itm      TYPE zlac_shop_so_itm,
-          ls_so_itm_json TYPE zshop_so_itm_json.
+          ls_so_itm_json TYPE zlac_shop_so_itm_json.
 
     ls_so_itm_json = ia_data.
 
@@ -66,7 +66,7 @@ CLASS ZCL_LAC_SHOP_PERSIST_SO_ITM IMPLEMENTATION.
   METHOD zif_lac_shop_persist_so_itm~delete_resource.
 
     DATA: ls_so_itm      TYPE zlac_shop_so_itm,
-          ls_so_itm_json TYPE zshop_so_itm_json.
+          ls_so_itm_json TYPE zlac_shop_so_itm_json.
 
     ls_so_itm_json = ia_data.
 

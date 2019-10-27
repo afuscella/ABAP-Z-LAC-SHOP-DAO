@@ -16,7 +16,7 @@ CLASS ZCL_LAC_SHOP_SO_TXT_DB IMPLEMENTATION.
 
   METHOD zif_lac_shop_so_txt_db~create.
 
-    SELECT COUNT(*) FROM zshop_so_txt
+    SELECT COUNT(*) FROM zlac_shop_so_txt
       WHERE so_number = is_data-so_number
         AND posnr     = is_data-posnr
         AND line      = is_data-line.
@@ -27,7 +27,7 @@ CLASS ZCL_LAC_SHOP_SO_TXT_DB IMPLEMENTATION.
           textid = zcx_lac_shop_data_exist=>conflict.
     ENDIF.
 
-    INSERT zshop_so_txt FROM is_data.
+    INSERT zlac_shop_so_txt FROM is_data.
 
     IF sy-subrc <> 0.
       RAISE EXCEPTION TYPE zcx_lac_shop_db_access_error
@@ -41,7 +41,7 @@ CLASS ZCL_LAC_SHOP_SO_TXT_DB IMPLEMENTATION.
 
   METHOD zif_lac_shop_so_txt_db~delete.
 
-    SELECT COUNT(*) FROM zshop_so_txt
+    SELECT COUNT(*) FROM zlac_shop_so_txt
       WHERE so_number = iv_so_number
         AND posnr     = iv_posnr.
 
@@ -51,8 +51,8 @@ CLASS ZCL_LAC_SHOP_SO_TXT_DB IMPLEMENTATION.
           textid = zcx_lac_shop_data_not_found=>not_found.
     ENDIF.
 
-    DELETE FROM zshop_so_txt WHERE so_number = iv_so_number
-                               AND posnr     = iv_posnr.
+    DELETE FROM zlac_shop_so_txt WHERE so_number = iv_so_number
+                                   AND posnr     = iv_posnr.
 
     IF sy-subrc <> 0.
       RAISE EXCEPTION TYPE zcx_lac_shop_db_access_error
@@ -74,7 +74,7 @@ CLASS ZCL_LAC_SHOP_SO_TXT_DB IMPLEMENTATION.
     MOVE-CORRESPONDING is_selection_fields-posnr     TO lr_sales_order_item.
     MOVE-CORRESPONDING is_selection_fields-line      TO lr_text_line.
 
-    SELECT * FROM zshop_so_txt INTO TABLE rt_data
+    SELECT * FROM zlac_shop_so_txt INTO TABLE rt_data
       WHERE so_number IN lr_sales_order_id
         AND posnr     IN lr_sales_order_item
         AND line      IN lr_text_line.
@@ -90,7 +90,7 @@ CLASS ZCL_LAC_SHOP_SO_TXT_DB IMPLEMENTATION.
 
   METHOD zif_lac_shop_so_txt_db~read_by_keys.
 
-    SELECT SINGLE * FROM zshop_so_txt INTO rs_data
+    SELECT SINGLE * FROM zlac_shop_so_txt INTO rs_data
       WHERE so_number = iv_sales_order_id
         AND posnr     = iv_sales_order_item
         AND line      = iv_text_line.
@@ -106,7 +106,7 @@ CLASS ZCL_LAC_SHOP_SO_TXT_DB IMPLEMENTATION.
 
   METHOD zif_lac_shop_so_txt_db~update.
 
-    SELECT COUNT(*) FROM zshop_so_txt
+    SELECT COUNT(*) FROM zlac_shop_so_txt
       WHERE so_number = is_data-so_number
         AND posnr     = is_data-posnr
         AND line      = is_data-line.
@@ -117,7 +117,7 @@ CLASS ZCL_LAC_SHOP_SO_TXT_DB IMPLEMENTATION.
           textid = zcx_lac_shop_data_not_found=>not_found.
     ENDIF.
 
-    MODIFY zshop_so_txt FROM is_data.
+    MODIFY zlac_shop_so_txt FROM is_data.
 
     IF sy-subrc <> 0.
       RAISE EXCEPTION TYPE zcx_lac_shop_db_access_error

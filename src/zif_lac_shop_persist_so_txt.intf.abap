@@ -6,7 +6,7 @@ interface ZIF_LAC_SHOP_PERSIST_SO_TXT
     importing
       !IA_DATA type ANY
     returning
-      value(RS_SO_TXT) type ZSHOP_SO_TXT
+      value(RS_SO_TXT) type ZLAC_SHOP_SO_TXT
     raising
       ZCX_LAC_SHOP_DATA_EXIST
       ZCX_LAC_SHOP_DB_ACCESS_ERROR .

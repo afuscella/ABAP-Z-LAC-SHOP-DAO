@@ -57,8 +57,8 @@ CLASS ZCL_LAC_SHOP_PERSIST_SO_TXT IMPLEMENTATION.
 
   METHOD zif_lac_shop_persist_so_txt~create_resource.
 
-    DATA: ls_so_txt      TYPE zshop_so_txt,
-          ls_so_txt_json TYPE zshop_so_txt_json,
+    DATA: ls_so_txt      TYPE zlac_shop_so_txt,
+          ls_so_txt_json TYPE zlac_shop_so_txt_json,
           lv_message     TYPE c LENGTH 1024.
 
     ls_so_txt_json = ia_data.
@@ -84,10 +84,10 @@ CLASS ZCL_LAC_SHOP_PERSIST_SO_TXT IMPLEMENTATION.
   ENDMETHOD.
 
 
-  METHOD ZIF_LAC_SHOP_PERSIST_SO_TXT~DELETE_RESOURCE.
+  METHOD zif_lac_shop_persist_so_txt~delete_resource.
 
-    DATA: ls_so_txt      TYPE zshop_so_txt,
-          ls_so_txt_json TYPE zshop_so_txt_json.
+    DATA: ls_so_txt      TYPE zlac_shop_so_txt,
+          ls_so_txt_json TYPE zlac_shop_so_txt_json.
 
     ls_so_txt_json = ia_data.
 

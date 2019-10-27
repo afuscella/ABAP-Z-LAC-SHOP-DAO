@@ -26,7 +26,7 @@ interface ZIF_LAC_SHOP_SO_TXT_DB
       ZCX_LAC_SHOP_DATA_NOT_FOUND .
   methods UPDATE
     importing
-      !IS_DATA type ZSHOP_SO_TXT
+      !IS_DATA type ZLAC_SHOP_SO_TXT
     raising
       ZCX_LAC_SHOP_DATA_NOT_FOUND
       ZCX_LAC_SHOP_DB_ACCESS_ERROR .

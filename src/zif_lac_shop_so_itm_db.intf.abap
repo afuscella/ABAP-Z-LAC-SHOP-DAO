@@ -20,12 +20,12 @@ interface ZIF_LAC_SHOP_SO_ITM_DB
       !IV_SALES_ORDER_ID type VBELN
       !IV_SALES_ORDER_ITEM type POSNR
     returning
-      value(RS_DATA) type ZSHOP_SO_ITM
+      value(RS_DATA) type ZLAC_SHOP_SO_ITM
     raising
       ZCX_LAC_SHOP_DATA_NOT_FOUND .
   methods UPDATE
     importing
-      !IS_DATA type ZSHOP_SO_ITM
+      !IS_DATA type ZLAC_SHOP_SO_ITM
     raising
       ZCX_LAC_SHOP_DATA_NOT_FOUND
       ZCX_LAC_SHOP_DB_ACCESS_ERROR .
