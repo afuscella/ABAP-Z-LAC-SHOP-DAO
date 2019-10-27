@@ -3,9 +3,9 @@
  <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
   <asx:values>
    <VSEOCLASS>
-    <CLSNAME>ZCL_SHOP_SO_ITM_DB</CLSNAME>
+    <CLSNAME>ZCL_LAC_SHOP_SO_HDR_DB</CLSNAME>
     <LANGU>E</LANGU>
-    <DESCRIPT>Shop: DB Sales Order Item</DESCRIPT>
+    <DESCRIPT>Shop: DB Sales Order Header</DESCRIPT>
     <STATE>1</STATE>
     <CLSCCINCL>X</CLSCCINCL>
     <FIXPT>X</FIXPT>

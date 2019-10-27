@@ -1,4 +1,4 @@
-class ZCX_SHOP_DBDATA_ALREADY_EXISTS definition
+class ZCX_LAC_SHOP_DATA_NOT_FOUND definition
   public
   inheriting from ZCX_SHOP
   create public .
@@ -6,14 +6,14 @@ class ZCX_SHOP_DBDATA_ALREADY_EXISTS definition
 public section.
 
   constants:
-    begin of DATA_FOUND,
+    begin of NOT_FOUND,
       msgid type symsgid value 'ZSHOP',
-      msgno type symsgno value '004',
+      msgno type symsgno value '005',
       attr1 type scx_attrname value '',
       attr2 type scx_attrname value '',
       attr3 type scx_attrname value '',
       attr4 type scx_attrname value '',
-    end of DATA_FOUND .
+    end of NOT_FOUND .
 
   methods CONSTRUCTOR
     importing
@@ -25,7 +25,7 @@ ENDCLASS.
 
 
 
-CLASS ZCX_SHOP_DBDATA_ALREADY_EXISTS IMPLEMENTATION.
+CLASS ZCX_LAC_SHOP_DATA_NOT_FOUND IMPLEMENTATION.
 
 
   method CONSTRUCTOR.

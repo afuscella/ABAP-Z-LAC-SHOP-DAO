@@ -3,9 +3,9 @@
  <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
   <asx:values>
    <VSEOINTERF>
-    <CLSNAME>ZIF_SHOP_PERSISTENCE_SO_ITM</CLSNAME>
+    <CLSNAME>ZIF_LAC_SHOP_SO_ITM_DB</CLSNAME>
     <LANGU>E</LANGU>
-    <DESCRIPT>Shop: Sales Order Item Persistence</DESCRIPT>
+    <DESCRIPT>Shop: DB Sales Order Item</DESCRIPT>
     <EXPOSURE>2</EXPOSURE>
     <STATE>1</STATE>
     <UNICODE>X</UNICODE>

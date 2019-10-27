@@ -1,31 +1,31 @@
-class ZCL_SHOP_PERSISTENCE_SO_TXT definition
+class ZCL_LAC_SHOP_PERSIST_SO_TXT definition
   public
   create public .
 
 public section.
 
-  interfaces ZIF_SHOP_PERSISTENCE_SO_TXT .
+  interfaces ZIF_LAC_SHOP_PERSIST_SO_TXT .
 
   methods CONSTRUCTOR
     importing
-      !IO_TEXT_DB type ref to ZIF_SHOP_SO_TXT_DB optional
-      !IO_TEXT_WRAP type ref to ZIF_TEXT_WRAP optional .
+      !IO_TEXT_DB type ref to ZIF_LAC_SHOP_SO_TXT_DB optional
+      !IO_TEXT_WRAP type ref to ZIF_LAC_TEXT_WRAP optional .
 protected section.
 private section.
 
-  data MO_TEXT_DB type ref to ZIF_SHOP_SO_TXT_DB .
-  data MO_TEXT_WRAP type ref to ZIF_TEXT_WRAP .
+  data MO_TEXT_DB type ref to ZIF_LAC_SHOP_SO_TXT_DB .
+  data MO_TEXT_WRAP type ref to ZIF_LAC_TEXT_WRAP .
 
   methods FORMATTER_INPUT_MESSAGE
     importing
       !IV_MESSAGE type C
     returning
-      value(RS_SPLIT_RESULT) type ZGENERAL_SPLIT_RESULT .
+      value(RS_SPLIT_RESULT) type ZLAC_SPLIT_RESULT .
 ENDCLASS.
 
 
 
-CLASS ZCL_SHOP_PERSISTENCE_SO_TXT IMPLEMENTATION.
+CLASS ZCL_LAC_SHOP_PERSIST_SO_TXT IMPLEMENTATION.
 
 
   METHOD constructor.
@@ -33,19 +33,19 @@ CLASS ZCL_SHOP_PERSISTENCE_SO_TXT IMPLEMENTATION.
     IF io_text_db IS BOUND.
       mo_text_db = io_text_db.
     ELSE.
-      CREATE OBJECT mo_text_db TYPE zcl_shop_so_txt_db.
+      CREATE OBJECT mo_text_db TYPE zcl_lac_shop_so_txt_db.
     ENDIF.
 
     IF io_text_wrap IS BOUND.
       mo_text_wrap = io_text_wrap.
     ELSE.
-      CREATE OBJECT mo_text_wrap TYPE zcl_text_wrap.
+      CREATE OBJECT mo_text_wrap TYPE zcl_lac_text_wrap.
     ENDIF.
 
   ENDMETHOD.
 
 
-  METHOD formatter_input_message.
+  METHOD FORMATTER_INPUT_MESSAGE.
 
     rs_split_result = mo_text_wrap->text_split(
       iv_length = 50 ##NUMBER_OK
@@ -55,7 +55,7 @@ CLASS ZCL_SHOP_PERSISTENCE_SO_TXT IMPLEMENTATION.
   ENDMETHOD.
 
 
-  METHOD zif_shop_persistence_so_txt~create_resource.
+  METHOD zif_lac_shop_persist_so_txt~create_resource.
 
     DATA: ls_so_txt      TYPE zshop_so_txt,
           ls_so_txt_json TYPE zshop_so_txt_json,
@@ -64,8 +64,8 @@ CLASS ZCL_SHOP_PERSISTENCE_SO_TXT IMPLEMENTATION.
     ls_so_txt_json = ia_data.
 
     " KEY fields
-    ls_so_txt-so_number = ls_so_txt_json-sales_order_id.
-    ls_so_txt-posnr     = ls_so_txt_json-sales_order_item.
+    ls_so_txt-so_number = ls_so_txt_json-salesorderid.
+    ls_so_txt-posnr     = ls_so_txt_json-salesorderitem.
 
     lv_message = ls_so_txt_json-message.
     WHILE lv_message <> space.
@@ -84,15 +84,15 @@ CLASS ZCL_SHOP_PERSISTENCE_SO_TXT IMPLEMENTATION.
   ENDMETHOD.
 
 
-  METHOD zif_shop_persistence_so_txt~delete_resource.
+  METHOD ZIF_LAC_SHOP_PERSIST_SO_TXT~DELETE_RESOURCE.
 
     DATA: ls_so_txt      TYPE zshop_so_txt,
           ls_so_txt_json TYPE zshop_so_txt_json.
 
     ls_so_txt_json = ia_data.
 
-    ls_so_txt-so_number = ls_so_txt_json-sales_order_id.
-    ls_so_txt-posnr     = ls_so_txt_json-sales_order_item.
+    ls_so_txt-so_number = ls_so_txt_json-salesorderid.
+    ls_so_txt-posnr     = ls_so_txt_json-salesorderitem.
 
     mo_text_db->delete(
       iv_so_number = ls_so_txt-so_number

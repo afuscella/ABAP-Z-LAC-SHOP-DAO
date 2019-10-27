@@ -1,39 +1,39 @@
-class ZCL_SHOP_SO_HDR_DB definition
+class ZCL_LAC_SHOP_SO_HDR_DB definition
   public
   create public .
 
 public section.
 
-  interfaces ZIF_SHOP_SO_HDR_DB .
+  interfaces ZIF_LAC_SHOP_SO_HDR_DB .
   PROTECTED SECTION.
   PRIVATE SECTION.
 ENDCLASS.
 
 
 
-CLASS ZCL_SHOP_SO_HDR_DB IMPLEMENTATION.
+CLASS ZCL_LAC_SHOP_SO_HDR_DB IMPLEMENTATION.
 
 
-  METHOD zif_shop_so_hdr_db~create.
+  METHOD zif_lac_shop_so_hdr_db~create.
 
-    SELECT COUNT(*) from zshop_so_hdr
+    SELECT COUNT(*) FROM zlac_shop_so_hdr
       WHERE bukrs     = is_data-bukrs
         AND branch    = is_data-branch
         AND so_number = is_data-so_number.
 
     IF sy-dbcnt > 0.
-      RAISE EXCEPTION TYPE zcx_shop_dbdata_already_exists
+      RAISE EXCEPTION TYPE zcx_lac_shop_data_exist
         EXPORTING
-          textid = zcx_shop_dbdata_already_exists=>data_found.
+          textid = zcx_lac_shop_data_exist=>conflict.
     ENDIF.
 
-    INSERT zshop_so_hdr FROM is_data.
+    INSERT zlac_shop_so_hdr FROM is_data.
 
     IF sy-subrc <> 0.
-      RAISE EXCEPTION TYPE zcx_shop_db_access_error
+      RAISE EXCEPTION TYPE zcx_lac_shop_db_access_error
         EXPORTING
-          textid        = zcx_shop_db_access_error=>create_error
-          mv_table_name = 'ZSHOP_SO_HDR'.
+          textid        = zcx_lac_shop_db_access_error=>create_error
+          mv_table_name = 'ZLAC_SHOP_SO_HDR'.
     ENDIF.
 
     rs_so_hdr = is_data.
@@ -41,32 +41,32 @@ CLASS ZCL_SHOP_SO_HDR_DB IMPLEMENTATION.
   ENDMETHOD.
 
 
-  METHOD zif_shop_so_hdr_db~delete.
+  METHOD zif_lac_shop_so_hdr_db~delete.
 
-    SELECT COUNT(*) FROM zshop_so_hdr
+    SELECT COUNT(*) FROM zlac_shop_so_hdr
       WHERE bukrs     = is_data-bukrs
         AND branch    = is_data-branch
         AND so_number = is_data-so_number.
 
     IF sy-dbcnt = 0.
-      RAISE EXCEPTION TYPE zcx_shop_dbdata_not_found
+      RAISE EXCEPTION TYPE zcx_lac_shop_data_not_found
         EXPORTING
-          textid = zcx_shop_dbdata_not_found=>no_data.
+          textid = zcx_lac_shop_data_not_found=>not_found.
     ENDIF.
 
-    DELETE zshop_so_hdr FROM is_data.
+    DELETE zlac_shop_so_hdr FROM is_data.
 
     IF sy-subrc <> 0.
-      RAISE EXCEPTION TYPE zcx_shop_db_access_error
+      RAISE EXCEPTION TYPE zcx_lac_shop_db_access_error
         EXPORTING
-          textid        = zcx_shop_db_access_error=>delete_error
-          mv_table_name = 'ZSHOP_SO_HDR'.
+          textid        = zcx_lac_shop_db_access_error=>delete_error
+          mv_table_name = 'ZLAC_SHOP_SO_HDR'.
     ENDIF.
 
   ENDMETHOD.
 
 
-  METHOD zif_shop_so_hdr_db~read.
+  METHOD zif_lac_shop_so_hdr_db~read.
 
     DATA: lr_company_code   TYPE RANGE OF bukrs,
           lr_business_place TYPE RANGE OF j_1bbranc_,
@@ -78,57 +78,57 @@ CLASS ZCL_SHOP_SO_HDR_DB IMPLEMENTATION.
     MOVE-CORRESPONDING is_selection_fields-so_number TO lr_so_number.
     MOVE-CORRESPONDING is_selection_fields-so_date   TO lr_so_date.
 
-    SELECT * FROM zshop_so_hdr INTO TABLE rt_data
+    SELECT * FROM zlac_shop_so_hdr INTO TABLE rt_data
       WHERE bukrs     IN lr_company_code
         AND branch    IN lr_business_place
         AND so_number IN lr_so_number
         AND so_date   IN lr_so_date.
 
     IF sy-dbcnt = 0.
-      RAISE EXCEPTION TYPE zcx_shop_dbdata_not_found
+      RAISE EXCEPTION TYPE zcx_lac_shop_data_not_found
         EXPORTING
-          textid = zcx_shop_dbdata_not_found=>no_data.
+          textid = zcx_lac_shop_data_not_found=>not_found.
     ENDIF.
 
   ENDMETHOD.
 
 
-  METHOD zif_shop_so_hdr_db~read_by_id.
+  METHOD zif_lac_shop_so_hdr_db~read_by_keys.
 
-    SELECT SINGLE * FROM zshop_so_hdr INTO rs_data
+    SELECT SINGLE * FROM zlac_shop_so_hdr INTO rs_data
       WHERE bukrs     = iv_company_code
         AND branch    = iv_business_place
         AND so_number = iv_sales_order_id.
 
     IF sy-dbcnt = 0.
-      RAISE EXCEPTION TYPE zcx_shop_dbdata_not_found
+      RAISE EXCEPTION TYPE zcx_lac_shop_data_not_found
         EXPORTING
-          textid = zcx_shop_dbdata_not_found=>no_data.
+          textid = zcx_lac_shop_data_not_found=>not_found.
     ENDIF.
 
   ENDMETHOD.
 
 
-  METHOD zif_shop_so_hdr_db~update.
+  METHOD zif_lac_shop_so_hdr_db~update.
 
-    SELECT COUNT(*) FROM zshop_so_hdr
+    SELECT COUNT(*) FROM zlac_shop_so_hdr
       WHERE bukrs     = is_data-bukrs
         AND branch    = is_data-branch
         AND so_number = is_data-so_number.
 
     IF sy-dbcnt = 0.
-      RAISE EXCEPTION TYPE zcx_shop_dbdata_not_found
+      RAISE EXCEPTION TYPE zcx_lac_shop_data_not_found
         EXPORTING
-          textid = zcx_shop_dbdata_not_found=>no_data.
+          textid = zcx_lac_shop_data_not_found=>not_found.
     ENDIF.
 
-    MODIFY zshop_so_hdr FROM is_data.
+    MODIFY zlac_shop_so_hdr FROM is_data.
 
     IF sy-subrc <> 0.
-      RAISE EXCEPTION TYPE zcx_shop_db_access_error
+      RAISE EXCEPTION TYPE zcx_lac_shop_db_access_error
         EXPORTING
-          textid        = zcx_shop_db_access_error=>update_error
-          mv_table_name = 'ZSHOP_SO_HDR'.
+          textid        = zcx_lac_shop_db_access_error=>update_error
+          mv_table_name = 'ZLAC_SHOP_SO_HDR'.
     ENDIF.
 
   ENDMETHOD.

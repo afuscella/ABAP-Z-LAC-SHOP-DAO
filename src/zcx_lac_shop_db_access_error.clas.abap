@@ -1,4 +1,4 @@
-class ZCX_SHOP_DB_ACCESS_ERROR definition
+class ZCX_LAC_SHOP_DB_ACCESS_ERROR definition
   public
   inheriting from ZCX_SHOP
   create public .
@@ -45,7 +45,7 @@ ENDCLASS.
 
 
 
-CLASS ZCX_SHOP_DB_ACCESS_ERROR IMPLEMENTATION.
+CLASS ZCX_LAC_SHOP_DB_ACCESS_ERROR IMPLEMENTATION.
 
 
   method CONSTRUCTOR.

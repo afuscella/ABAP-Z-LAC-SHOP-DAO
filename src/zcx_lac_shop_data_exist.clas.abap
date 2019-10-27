@@ -1,4 +1,4 @@
-class ZCX_SHOP_DBDATA_NOT_FOUND definition
+class ZCX_LAC_SHOP_DATA_EXIST definition
   public
   inheriting from ZCX_SHOP
   create public .
@@ -6,14 +6,14 @@ class ZCX_SHOP_DBDATA_NOT_FOUND definition
 public section.
 
   constants:
-    begin of NO_DATA,
+    begin of CONFLICT,
       msgid type symsgid value 'ZSHOP',
-      msgno type symsgno value '005',
+      msgno type symsgno value '004',
       attr1 type scx_attrname value '',
       attr2 type scx_attrname value '',
       attr3 type scx_attrname value '',
       attr4 type scx_attrname value '',
-    end of NO_DATA .
+    end of CONFLICT .
 
   methods CONSTRUCTOR
     importing
@@ -25,7 +25,7 @@ ENDCLASS.
 
 
 
-CLASS ZCX_SHOP_DBDATA_NOT_FOUND IMPLEMENTATION.
+CLASS ZCX_LAC_SHOP_DATA_EXIST IMPLEMENTATION.
 
 
   method CONSTRUCTOR.
