@@ -68,7 +68,7 @@ CLASS ZCL_LAC_SHOP_SO_TXT_DB IMPLEMENTATION.
 
     DATA: lr_sales_order_id   TYPE RANGE OF vbeln,
           lr_sales_order_item TYPE RANGE OF posnr,
-          lr_text_line        TYPE RANGE OF zlac_shop_text_line.
+          lr_text_line        TYPE RANGE OF zlac_text_line.
 
     MOVE-CORRESPONDING is_selection_fields-so_number TO lr_sales_order_id.
     MOVE-CORRESPONDING is_selection_fields-posnr     TO lr_sales_order_item.

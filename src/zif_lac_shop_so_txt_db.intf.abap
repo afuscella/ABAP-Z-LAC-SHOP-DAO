@@ -19,7 +19,7 @@ interface ZIF_LAC_SHOP_SO_TXT_DB
     importing
       !IV_SALES_ORDER_ID type J_1BBRANC_
       !IV_SALES_ORDER_ITEM type VBELN
-      !IV_TEXT_LINE type ZLAC_SHOP_TEXT_LINE
+      !IV_TEXT_LINE type ZLAC_TEXT_LINE
     returning
       value(RS_DATA) type ZLAC_SHOP_SO_TXT
     raising

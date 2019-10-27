@@ -71,7 +71,7 @@ CLASS ZCL_LAC_SHOP_SO_HDR_DB IMPLEMENTATION.
     DATA: lr_company_code   TYPE RANGE OF bukrs,
           lr_business_place TYPE RANGE OF j_1bbranc_,
           lr_so_number      TYPE RANGE OF vbeln,
-          lr_so_date        TYPE RANGE OF zshop_so_date.
+          lr_so_date        TYPE RANGE OF zlac_so_date.
 
     MOVE-CORRESPONDING is_selection_fields-bukrs     TO lr_company_code.
     MOVE-CORRESPONDING is_selection_fields-branch    TO lr_business_place.
