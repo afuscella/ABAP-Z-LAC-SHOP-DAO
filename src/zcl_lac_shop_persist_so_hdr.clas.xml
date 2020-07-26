@@ -30,6 +30,12 @@
      <LANGU>E</LANGU>
      <DESCRIPT>Shop: DB Sales Order Header</DESCRIPT>
     </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_LAC_SHOP_PERSIST_SO_HDR</CLSNAME>
+     <CMPNAME>MO_TIME_WRAP</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>LAC: Time Class Wrapper</DESCRIPT>
+    </SEOCOMPOTX>
    </DESCRIPTIONS>
   </asx:values>
  </asx:abap>
